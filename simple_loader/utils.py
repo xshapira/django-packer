@@ -3,10 +3,7 @@ import json
 def get_webpack_status():
     with open('webpack-status.json') as webpack_json:
         data = json.load(webpack_json)
-        if data['status'] == 'done':
-            return data['chunks']['app']
-        else:
-            return []
+        return data['chunks']['app'] if data['status'] == 'done' else []
 
 def htmlify(bundles):
     ctx = []
